@@ -1,7 +1,7 @@
 {
   "name": "component-loader",
   "version": "1.0.0",
-  "description": "use to load a component dynamically",
+  "description": "use to load a component dynamically.",
   "main": "dist/bundles/component-loader.umd.js",
   "scripts": {
       "cleanup": "rimraf dist/bundles dist/src dist/index.d.ts dist/index.js dist/index.js.map dist/README.md",

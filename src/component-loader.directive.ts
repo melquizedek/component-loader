@@ -7,7 +7,7 @@ import { ComponentModel } from './component.model';
 
 export class ComponentLoaderDirective {
 
-	@Input("tempLoader") componentToUsed : any;
+	@Input("componentLoader") componentToUsed : any;
 	
 	constructor(public viewContainerRef: ViewContainerRef,
 				private componentFactoryResolver: ComponentFactoryResolver) { 
