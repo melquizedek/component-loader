@@ -1,3 +1,2 @@
-export {ComponentLoaderModule} from './component-loader.module';
-export {ComponentLoaderDirective} from './component-loader.directive';
-export {ComponentModel} from './component.model';
+export {ComponentLoaderDirectiveModule} from './shared/directives/component-loader.directive.module';
+export {ProfileComponentModule} from './components/profile/profile.component.module';

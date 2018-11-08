@@ -10,4 +10,4 @@ import { ComponentLoaderDirective } from './component-loader.directive';
   exports: [ ComponentLoaderDirective ]
 })
 
-export class ComponentLoaderModule { }
+export class ComponentLoaderDirectiveModule { }

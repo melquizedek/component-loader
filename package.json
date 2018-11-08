@@ -4,10 +4,10 @@
   "description": "use to load a component dynamically.",
   "main": "dist/bundles/component-loader.umd.js",
   "scripts": {
-      "cleanup": "rimraf dist/bundles dist/src dist/index.d.ts dist/index.js dist/index.js.map dist/README.md",
-      "bundling": "rollup -c",
-      "minify": "uglifyjs dist/bundles/component-loader.umd.js --screw-ie8 --compress --mangle --comments --output dist/bundles/component-loader.umd.min.js",
-      "build": "npm run cleanup && ngc && npm run bundling && npm run minify"
+    "cleanup": "rimraf dist/bundles dist/src dist/index.d.ts dist/index.js dist/index.js.map dist/README.md",
+    "bundling": "rollup -c",
+    "minify": "uglifyjs dist/bundles/component-loader.umd.js --screw-ie8 --compress --mangle --comments --output dist/bundles/component-loader.umd.min.js",
+    "build": "npm run cleanup && ngc && npm run bundling && npm run minify"
   },
   "author": "zedpaala",
   "license": "ISC",
