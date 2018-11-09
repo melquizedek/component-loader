@@ -1,12 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ProfileDefaultComponent } from './profile-default/profile-default.component';
+import { ViewProfileComponent } from './view-profile.component';
 
 @Component({
-    selector: 'ui-loader-profile',
+    selector: 'view-profile-core',
     template: `<ng-template [componentLoader]="loadThisComponet"></ng-template>`
 })
 
-export class ProfileComponent implements OnInit {
+export class ViewProfileCoreComponent implements OnInit {
     
     @Input() useThisComponent: any = null;
     loadThisComponet: any = null;
@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit {
     ngOnInit() {
         this.loadThisComponet = this.useThisComponent;
         if (!this.loadThisComponet) {
-            this.loadThisComponet = ProfileDefaultComponent;
+            this.loadThisComponet = ViewProfileComponent;
         }
     }
 
