@@ -2,11 +2,11 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ViewProfileComponent } from './view-profile.component';
 
 @Component({
-    selector: 'view-profile-core',
+    selector: 'core-view-profile',
     template: `<ng-template [componentLoader]="loadThisComponet"></ng-template>`
 })
 
-export class ViewProfileCoreComponent implements OnInit {
+export class CoreViewProfileComponent implements OnInit {
     
     @Input() useThisComponent: any = null;
     loadThisComponet: any = null;

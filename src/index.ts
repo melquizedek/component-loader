@@ -1,2 +1,2 @@
 export {ComponentLoaderDirectiveModule} from './shared/directives/component-loader.directive.module';
-export {ProfileComponentCoreModule} from './profile/profile.module';
+export {CoreProfileModule} from './profile/core-profile.module';
