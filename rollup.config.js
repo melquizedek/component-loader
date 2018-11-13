@@ -3,7 +3,7 @@ export default {
     dest: 'dist/bundles/component-loader.umd.js',
     sourceMap: false,
     format: 'umd',
-    moduleName: 'ng.componentloader',
+    moduleName: 'component-loader',
     globals: {
       '@angular/core': 'ng.core',
       'rxjs/Observable': 'Rx',
