@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'core-view-profile',
-    template: `<ng-template [componentLoader]="loadThisComponet"></ng-template>`
+    template: `<h1>Core View Profile</h1>`
 })
 export class CoreViewProfileComponent implements OnInit {
     

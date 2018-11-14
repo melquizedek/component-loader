@@ -1,14 +1,14 @@
 import { NgModule, Optional } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CoreProfileModule } from './profile/core-profile.module';
 import { ComponentLoaderDirectiveModule } from './shared/directives/component-loader.directive.module';
+import { ConfigService } from './shared/services/config.service';
+import { AppConfigModel } from './classes/app-config.model';
 
 @NgModule({
     imports: [
-        CommonModule,
-        CoreProfileModule,
-        ComponentLoaderDirectiveModule
+        CommonModule
     ],
+    providers: [ ConfigService ],
     exports: [ ComponentLoaderDirectiveModule ]
 })
 
@@ -23,16 +23,11 @@ export class MainModule {
         };
     }
     
-    constructor(@Optional() config: AppConfigModel) {
+    constructor(@Optional() config: AppConfigModel, 
+        private configService: ConfigService) {
         if (config) { 
-            /* Save config data */ 
-            console.log(config, 'test');
+            this.configService.setConfig(config);
         }
-        console.log('read external config');
     }
 
-}
-
-export class AppConfigModel {
-    AppConfig : Object;
 }
