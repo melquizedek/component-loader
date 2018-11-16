@@ -1,13 +1,14 @@
 import {NgModule} from '@angular/core';
 import { ComponentLoaderDirectiveModule } from '../../shared/directives/component-loader.directive.module';
-import { ViewProfileComponent } from './core-view-profile.component';
+import { ViewProfileCoreComponent } from './core-view-profile.component';
 
 @NgModule({
     declarations: [
-        ViewProfileComponent
+        ViewProfileCoreComponent
     ],
-    entryComponents: [ ViewProfileComponent ],
-    imports: [ ComponentLoaderDirectiveModule ]
+    entryComponents: [ ViewProfileCoreComponent ],
+    imports: [ ComponentLoaderDirectiveModule ],
+    exports: [ ViewProfileCoreComponent ]
 })
 
 export class CoreViewProfileModule {

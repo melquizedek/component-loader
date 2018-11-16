@@ -1,3 +1,3 @@
 export class AppConfigModel {
-    AppConfig : Object;
+    AppConfig : object;
 }

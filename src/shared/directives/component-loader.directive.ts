@@ -18,7 +18,9 @@ export class ComponentLoaderDirective implements OnInit {
 		//console.log(this.configService.getConfig(), "get config from ComponentLoaderDirective");
 		
 		this.componentToUsed = this.configService.getConfig('ProfileModule', 'ViewProfileComponent');
+		
 		console.log(this.componentToUsed, 'this.componentToUsed');
+
 		if (this.componentToUsed) 
 		{
 			let componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.componentToUsed.prototype.constructor);

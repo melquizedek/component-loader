@@ -6,8 +6,7 @@ import { CoreViewProfileModule } from './view-profile/core-view-profile.module';
     imports: [
         CommonModule,
         CoreViewProfileModule
-    ],
-    exports: [ CoreViewProfileModule ]
+    ]
 })
 
 export class CoreProfileModule {}
