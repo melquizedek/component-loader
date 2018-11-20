@@ -10,11 +10,20 @@ export class ConfigService {
     constructor() {}
 
     setConfig(config: AppConfigModel) {
-        this.config = config;
+        this.config = config.AppConfig;
     }
 
-    getConfig(moduleName: string, componentName: string) : AppConfigModel {
-        return this.config['AppConfig'][moduleName]['components'][componentName];
+    getConfig(type: string, fieldName: string, moduleName: string, componentName: string) : any {
+        if (type === "module") {
+            const componentToUsed = this.config[fieldName][moduleName]['components'][componentName];
+            //console.log('componentToUsed => ', componentToUsed);
+            return componentToUsed;
+        }
+        if (type === "entrycomponents") {
+            console.log('Core:getConfig:entrycomponents => ', this.config['entryComponentModule']);
+            return this.config['entryComponentModule'];
+        }
+        return null;
     }
 
 }
