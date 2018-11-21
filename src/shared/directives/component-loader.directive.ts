@@ -1,9 +1,14 @@
-import { Directive, ViewContainerRef, 
-	Input, ComponentFactoryResolver, OnInit, 
-	AfterViewInit, SystemJsNgModuleLoader, Compiler, Injector } from '@angular/core';
+import { 
+	Directive, 
+	ViewContainerRef, 
+	ComponentFactoryResolver, 
+	OnInit, 
+	AfterViewInit, 
+	Compiler, 
+	Injector 
+} from '@angular/core';
 import { ConfigService } from '../services/config.service';
 import { AppConfigModel } from 'src/classes/app-config.model';
-import { ViewProfileCoreComponent } from '../../profile/view-profile/core-view-profile.component';
 
 @Directive({
   selector: '[componentLoader]'

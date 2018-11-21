@@ -3,23 +3,24 @@ import { CommonModule } from '@angular/common';
 import { ConfigService } from './shared/services/config.service';
 import { AppConfigModel } from './classes/app-config.model';
 
-//Components
-import { ViewProfileCoreComponent } from './profile/view-profile/core-view-profile.component';
-
-//Directives
+import { CoreProfileModule } from './profile/profile-core.module';
 import { ComponentLoaderDirective } from './shared/directives/component-loader.directive';
 
 @NgModule({
     imports: [
-        CommonModule
+        CommonModule,
+        CoreProfileModule
     ],
     declarations: [
-        ViewProfileCoreComponent,
         ComponentLoaderDirective
     ],
-    entryComponents: [ ViewProfileCoreComponent ],
+    entryComponents: [ 
+    ],
     providers: [ ConfigService ],
-    exports: [ ComponentLoaderDirective ]
+    exports: [ 
+        ComponentLoaderDirective,
+        CoreProfileModule
+    ]
 })
 
 export class MainModule {

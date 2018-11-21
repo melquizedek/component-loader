@@ -1,0 +1,28 @@
+{
+  "name": "dss-component-loader",
+  "version": "1.0.60",
+  "description": "Use to load component dynamically.",
+  "main": "bundles/component-loader.umd.js",
+  "module": "index.js",
+  "typings": "index.d.ts",
+  "keywords": [
+    "angular2",
+    "angular3",
+    "angular4",
+    "angular5"
+  ],
+  "author": "Zed Paala",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/melquizedek/component-loader.git"
+  },
+  "homepage": "https://github.com/melquizedek/component-loader",
+  "bugs": {
+    "url": "https://github.com/melquizedek/component-loader/issues"
+  },
+  "peerDependencies": {
+      "@angular/core": "^5.2.0",
+      "rxjs": "^5.5.6"
+  }
+}
