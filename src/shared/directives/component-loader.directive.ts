@@ -42,7 +42,7 @@ export class ComponentLoaderDirective implements OnInit, AfterViewInit {
 	}
 
 	ngAfterViewInit() {
-		const entryCompsPath = this.configService.getConfig("entrycomponents", "", "", "");
+		const entryCompsPath = this.configService.getConfig("ENTRY_COMPS", "", "");
 		
 		console.log('Core:ngAfterViewInit:entryComps => ', entryCompsPath);
 		

@@ -13,17 +13,16 @@ export class ConfigService {
         this.config = config.AppConfig;
     }
 
-    getConfig(type: string, fieldName: string, moduleName: string, componentName: string) : any {
-        if (type === "module") {
-            const componentToUsed = this.config[fieldName][moduleName]['components'][componentName];
-            //console.log('componentToUsed => ', componentToUsed);
-            return componentToUsed;
+    getConfig(type: string, moduleName: string, componentName: string) : any {
+        let config = null;
+        if (type === "MODULE") {
+            config = this.config[moduleName][componentName];
         }
-        if (type === "entrycomponents") {
-            console.log('Core:getConfig:entrycomponents => ', this.config['entryComponentModule']);
-            return this.config['entryComponentModule'];
+        if (type === "ENTRY_COMPS") {
+            config = this.config[moduleName];
         }
-        return null;
+        console.log("Core:ConfigService:getConfig => ", type, config);
+        return config;
     }
 
 }
