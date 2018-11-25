@@ -1,6 +1,6 @@
 {
   "name": "dss-component-loader",
-  "version": "1.0.78",
+  "version": "1.0.82",
   "description": "Use to load component dynamically.",
   "main": "bundles/component-loader.umd.js",
   "module": "index.js",

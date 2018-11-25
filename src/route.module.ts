@@ -1,4 +1,4 @@
-import { NgModule, Optional } from '@angular/core';
+import { NgModule, Optional, ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule, Router } from '@angular/router';
 import { AppConfigModel } from './classes/app-config.model';
 import { ProfileCoreComponent } from './profile/profile-core.component';
@@ -31,42 +31,43 @@ const routes: Routes = [
 
 export class AppRoutingCoreModule {
 
-    static forRoot(config: any): any {
+    static forRoot(appConfig: AppConfigModel): ModuleWithProviders {
         return {
             ngModule: AppRoutingCoreModule,
             providers: [
-                { provide: AppConfigModel, useValue: config }
+                { provide: AppConfigModel, useValue: appConfig }
             ]
         };
     }
     
-    constructor(@Optional() config: AppConfigModel, 
+    constructor(@Optional() appConfig: AppConfigModel, 
         private configService: ConfigService,
         private router: Router) {
         
-        console.log('Core:AppRoutingCoreModule:constructor => ', config);
+        console.log('Core:AppRoutingCoreModule:constructor => ', appConfig);
         
-        if (config) { 
-            this.configService.setConfig(config);
+        if (appConfig) { 
+            this.configService.setConfig(appConfig);
 
-            const profileCustomComponent = this.configService.getConfig("MODULE", "ProfileModule", "ProfileComponent");
-            const profileComponent = profileCustomComponent ? profileCustomComponent : ProfileCoreComponent;
+            // const profileCustomComponent = this.configService.getConfig("MODULE", "ProfileModule", "ProfileComponent");
+            // const profileComponent = profileCustomComponent ? profileCustomComponent : ProfileCoreComponent;
 
-            console.log("Core:AppRoutingCoreModule:appConfig => ", profileComponent);
+            // console.log("Core:AppRoutingCoreModule:appConfig => ", profileComponent);
 
-            const routes: Routes = [
-                {
-                    path: 'profile',
-                    component: profileComponent
-                },
-                {
-                    path: '',
-                    redirectTo: 'profile',
-                    pathMatch: 'full'
-                }
-            ];
 
-            this.router.resetConfig(routes);
+            // const routes: Routes = [
+            //     {
+            //         path: 'profile',
+            //         component: profileComponent
+            //     },
+            //     {
+            //         path: '',
+            //         redirectTo: 'profile',
+            //         pathMatch: 'full'
+            //     }
+            // ];
+
+            // this.router.resetConfig(routes);
         }
     }
 

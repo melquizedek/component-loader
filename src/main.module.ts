@@ -26,7 +26,8 @@ import { AppRoutingCoreModule } from './route.module';
         ComponentLoaderDirective,
         CoreProfileModule,
         SharedCoreModule,
-        AppRoutingCoreModule
+        AppRoutingCoreModule,
+        MainComponent
     ]
 })
 
