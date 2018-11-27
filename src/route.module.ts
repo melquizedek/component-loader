@@ -1,4 +1,4 @@
-import { NgModule, Optional } from '@angular/core';
+import { NgModule, Optional, ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule, Router } from '@angular/router';
 import { AppConfigModel } from './classes/app-config.model';
 import { ProfileCoreComponent } from './profile/profile-core.component';
@@ -32,6 +32,7 @@ export class AppRoutingCoreModule {
             ngModule: AppRoutingCoreModule,
             providers: [
                 { provide: AppConfigModel, useValue: customConfig }
+
             ]
         };
     }
@@ -42,6 +43,7 @@ export class AppRoutingCoreModule {
         console.log('Core:AppRoutingCoreModule:constructor => ', customConfig);   
         if (customConfig) { 
             this.configService.setConfig(customConfig);           
+
         }
     }
 
