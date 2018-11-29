@@ -1,19 +1,18 @@
 import { 
 	Directive, 
-	ViewContainerRef, 
-	ComponentFactoryResolver, 
+	ViewContainerRef,
 	OnInit, 
 	AfterViewInit, 
 	Compiler, 
-	Injector 
+	Injector, 
+	Inject,
+	Type,
+	Input
 } from '@angular/core';
 import { ConfigService } from '../services/config.service';
-import { AppConfigModel } from 'src/classes/app-config.model';
-import { componentList } from '../../component-list';
-import { Routes, Router } from '@angular/router';
-
-//Core Components
-import { ProfileCoreComponent } from '../../profile/profile-core.component';
+import { CUSTOM_COMPONENTS } from '../../tokens/tokens';
+import { AppConfigModel } from '../../classes/app-config.model';
+import { Router, Routes } from '@angular/router';
 
 @Directive({
   selector: '[componentLoader]'
@@ -21,20 +20,24 @@ import { ProfileCoreComponent } from '../../profile/profile-core.component';
 
 export class ComponentLoaderDirective implements OnInit, AfterViewInit {
 
-	//@Input("componentLoader") componentToUsed : any;
-	componentToUsed: any;
+	@Input("componentLoader") componentToUsed : Type<any>;
 
 	constructor(public viewContainerRef: ViewContainerRef,
 				private configService: ConfigService,
 				private injector: Injector,
 				private compiler: Compiler,
-				private router: Router) {}
+				@Inject(CUSTOM_COMPONENTS) private customComponents: AppConfigModel,
+				private router: Router) {
+					this.configService.setConfig(this.customComponents);
+				}
 
 	ngOnInit() {}
 
 	ngAfterViewInit() {
+			
+			console.log('ComponentLoaderDirective:CUSTOM_COMPONENTS ', this.customComponents);
+
 			const customComponents = this.configService.getConfig("CUSTOM_COMPONENT", "customComponents", "ProfileComponent");
-			//console.log('Core:customComponents', customComponents);
             const entryCompModule = this.configService.getConfig("ENTRY_COMPS", "entryComponentModule", "");
             
             this.compiler.compileModuleAndAllComponentsAsync(entryCompModule).then((compiled) => {
@@ -49,13 +52,12 @@ export class ComponentLoaderDirective implements OnInit, AfterViewInit {
 				if (customFactory) {
 					this.viewContainerRef.clear();
 					customFactory.create(this.injector, [], null, m);
-					const componentRef = this.viewContainerRef.createComponent(customFactory);
-					let profileComponent = customFactory.componentType;//componentRef.componentType;
+					this.viewContainerRef.createComponent(customFactory);
 
 					const routes: Routes = [
 						{
 							path: 'profile',
-							component: profileComponent
+							component: customFactory.componentType
 						},
 						{
 							path: '',
@@ -63,6 +65,7 @@ export class ComponentLoaderDirective implements OnInit, AfterViewInit {
 							pathMatch: 'full'
 						}
 					];
+	
 					this.router.resetConfig(routes);
 				}
 

@@ -1,29 +1,32 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CoreProfileModule } from './profile/profile-core.module';
 import { ComponentLoaderDirective } from './shared/directives/component-loader.directive';
-import { RouteCoreService } from './shared/services/route.service';
 import { ConfigService } from './shared/services/config.service';
 import { AppRoutingCoreModule } from './route.module';
-import { ProfileCoreComponent } from './profile/profile-core.component';
+import { AppConfigModel } from './classes/app-config.model';
+import { MaterialModule } from './material.module';
+import { CUSTOM_COMPONENTS } from './tokens/tokens';
 
 @NgModule({
     imports: [
         CommonModule,
-        CoreProfileModule,
         AppRoutingCoreModule
     ],
     declarations: [
-        ComponentLoaderDirective
+        ComponentLoaderDirective,
     ],
-    entryComponents: [ 
-    ],
-    providers: [ ConfigService, RouteCoreService ],
-    exports: [ 
-        ProfileCoreComponent,
-        AppRoutingCoreModule,
-        ComponentLoaderDirective
-    ]
+    providers: [ ConfigService ]
 })
 
-export class MainModule {}
+export class MainModule {
+
+    static forRoot(customConfig: AppConfigModel) : ModuleWithProviders {
+        return {
+            ngModule: AppRoutingCoreModule,
+            providers: [
+                { provide: CUSTOM_COMPONENTS, useValue: customConfig }
+            ]
+        };
+    }
+
+}

@@ -1,2 +1,2 @@
-export { MainModule } from './main.module';
 export { AppRoutingCoreModule } from './route.module';
+export { ComponentLoaderDirective } from './shared/directives/component-loader.directive';

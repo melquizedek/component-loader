@@ -1,8 +1,12 @@
-import { NgModule, Optional, ModuleWithProviders } from '@angular/core';
-import { Routes, RouterModule, Router } from '@angular/router';
-import { AppConfigModel } from './classes/app-config.model';
+import { NgModule, ModuleWithProviders } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 import { ProfileCoreComponent } from './profile/profile-core.component';
+import { MaterialModule } from './material.module';
 import { ConfigService } from './shared/services/config.service';
+import { CUSTOM_COMPONENTS } from './tokens/tokens';
+import { AppConfigModel } from './classes/app-config.model';
+import { ComponentLoaderDirective } from './shared/directives/component-loader.directive';
+import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
     {
@@ -17,34 +21,26 @@ const routes: Routes = [
 ];
 
 @NgModule({
+    declarations: [ 
+        ProfileCoreComponent,
+        ComponentLoaderDirective
+    ],
     imports: [
+        CommonModule,
+        MaterialModule,
       	RouterModule.forRoot(routes)
     ],
-    exports: [
-        RouterModule
-    ]
+    providers: [ ConfigService ],
+    exports: [ RouterModule, ComponentLoaderDirective ]
 })
 
 export class AppRoutingCoreModule {
-
-    static forRoot(customConfig: AppConfigModel) : any {
+    static forRoot(customConfig: AppConfigModel) : ModuleWithProviders {
         return {
             ngModule: AppRoutingCoreModule,
             providers: [
-                { provide: AppConfigModel, useValue: customConfig }
-
+                { provide: CUSTOM_COMPONENTS, useValue: customConfig }
             ]
         };
     }
-    
-    constructor(@Optional() customConfig: AppConfigModel, 
-        private configService: ConfigService) 
-    {    
-        console.log('Core:AppRoutingCoreModule:constructor => ', customConfig);   
-        if (customConfig) { 
-            this.configService.setConfig(customConfig);           
-
-        }
-    }
-
 }
