@@ -35,7 +35,7 @@ export class ComponentLoaderDirective implements OnInit, AfterViewInit {
 
 	ngAfterViewInit() {
 			
-			console.log('ComponentLoaderDirective:CUSTOM_COMPONENTS ', this.customComponents);
+			//console.log('ComponentLoaderDirective:CUSTOM_COMPONENTS ', this.customComponents);
 
 			const customComponents = this.configService.getConfig("CUSTOM_COMPONENT", "customComponents", "ProfileComponent");
             const entryCompModule = this.configService.getConfig("ENTRY_COMPS", "entryComponentModule", "");
@@ -47,7 +47,7 @@ export class ComponentLoaderDirective implements OnInit, AfterViewInit {
 				let customFactory: any = compiled.componentFactories.find(compFactory => 
 					compFactory.componentType.name === customComponents.componentName);
 
-                console.log('Core:selected.customFactory => ', customFactory);
+                //console.log('Core:selected.customFactory => ', customFactory);
 				
 				if (customFactory) {
 					this.viewContainerRef.clear();
